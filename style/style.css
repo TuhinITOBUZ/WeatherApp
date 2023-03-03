@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #3937fa;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .banner {
+    font-size: 2em;
+  }
+}
+
+.shareIcon {
+  width: 5%;
+  height: 7%;
+  margin-left: 30px;
+}
+
+.menuIcon {
+  width: 5%;
+  height: 5%;
+  margin-right: 30px;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
+}
+
+.weatherLogo {
+  width: 15%;
+  height: 230px;
+}
+
+.weatherLogo img {
+  margin-top: 50px;
+  width: 100%;
+  height: auto;
+}
+.weatherDetails {
+  margin: 20px;
+}
+.weatherDetails h2 {
+  font-size: 6.5rem;
+  color: white;
+  margin-top: 60px;
+}
+
+.weatherDetails h5 {
+  font-size: 2rem;
+  color: lightblue;
+}
+
+.notes {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.notes p {
+  width: 50%;
+  font-size: 2.7rem;
+  color: lightsteelblue;
+}
+
+.location-name {
+  background: transparent;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  color: white;
+  outline: none;
+  font-size: 3rem;
+}
