@@ -8,27 +8,27 @@ async function getWeatherData(location) {
       return res.json();
     })
     .catch((err) => {
-     console.log(err)
+      console.log(err);
     });
-    if(response.error)
-    {
-      alert(response.error.message);
-    }
-  document.getElementById("temperature").innerHTML =
-    response.current.temp_c + "°";
-  document.getElementById("feelsLike").innerHTML =
-    "Feels " + response.current.feelslike_c + "°";
-  var image = document.getElementById("weatherIcon");
-  if (response.current.condition.text === "Overcast") {
-    image.src = "image/overcast.svg";
-  } else if (response.current.condition.text === "Sunny") {
-    image.src = "image/sunny.svg";
-  } else if (response.current.condition.text === "Mist") {
-    image.src = "image/mist.svg";
-  } else if (response.current.condition.text === "Clear") {
-    image.src = "image/clear.svg";
+  if (response.error) {
+    alert(response.error.message);
   } else {
-    image.src = "image/icon3.png";
+    document.getElementById("temperature").innerHTML =
+      response.current.temp_c + "°";
+    document.getElementById("feelsLike").innerHTML =
+      "Feels " + response.current.feelslike_c + "°";
+    var image = document.getElementById("weatherIcon");
+    if (response.current.condition.text === "Overcast") {
+      image.src = "image/overcast.svg";
+    } else if (response.current.condition.text === "Sunny") {
+      image.src = "image/sunny.svg";
+    } else if (response.current.condition.text === "Mist") {
+      image.src = "image/mist.svg";
+    } else if (response.current.condition.text === "Clear") {
+      image.src = "image/clear.svg";
+    } else {
+      image.src = "image/icon3.png";
+    }
   }
 }
 
@@ -43,7 +43,3 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
-
-(() => {
-  document.getElementById("locationInput").innerHTML = "Kolkata";
-})();
