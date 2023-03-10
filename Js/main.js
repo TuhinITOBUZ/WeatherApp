@@ -34,7 +34,7 @@ async function getWeatherData(location) {
 
 document.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
-    var loc = document.getElementById("locationInput").value;
+    var loc = document.getElementById("location-input").value;
     if (loc == null || loc == "") {
       document.getElementById("temperature").innerHTML = "0°";
       document.getElementById("feelsLike").innerHTML = "Feels 0°";
@@ -43,3 +43,27 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
+
+function createDropdownList() {
+  var select = document.getElementById("location-input");
+  var elmts = [
+    "Kolkata",
+    "London",
+    "San Fransisco",
+    "Mumbai",
+    "Chennai",
+    "Orissa",
+    "Agra",
+    "Bangalore",
+    "Gujarat",
+    "Hyderabad",
+  ];
+  for (var i = 0; i < elmts.length; i++) {
+    var op = elmts[i];
+    var el = document.createElement("option");
+    el.textContent = op;
+    el.value = op;
+    select.appendChild(el);
+  }
+}
+createDropdownList()

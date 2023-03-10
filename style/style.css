@@ -15,11 +15,12 @@ body {
 .banner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
   font-size: 4em;
   color: white;
-  padding: 10px 0;
-  margin-top: 20px;
+  padding-top: 2vh;
+  padding-bottom: 2vh ;
 }
 
 @media screen and (max-width: 600px) {
@@ -44,7 +45,9 @@ body {
   display: flex;
   gap: 3rem;
   justify-content: center;
-  height: 30vh;
+  align-items: center;
+  height: fit-content;
+  padding-top: 5vh ;
 }
 
 .weatherLogo {
@@ -99,4 +102,12 @@ body {
   color: white;
   outline: none;
   font-size: 3rem;
+}
+
+#location-input{
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  text-align: center;
+  color: #ffffff;
 }
