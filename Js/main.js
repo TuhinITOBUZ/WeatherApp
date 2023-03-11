@@ -1,3 +1,4 @@
+
 async function getWeatherData(location) {
   const response = await fetch(
     "http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=" +
@@ -31,18 +32,27 @@ async function getWeatherData(location) {
     }
   }
 }
+// on enter key
+// document.addEventListener("keydown", (e) => {
+//   if (e.key == "Enter") {
+//     var loc = document.getElementById("location-input").value;
+//     if (loc == null || loc == "") {
+//       document.getElementById("temperature").innerHTML = "0°";
+//       document.getElementById("feelsLike").innerHTML = "Feels 0°";
+//     } else {
+//       getWeatherData(loc);
+//     }
+//   }
+// });
 
-document.addEventListener("keydown", (e) => {
-  if (e.key == "Enter") {
-    var loc = document.getElementById("location-input").value;
-    if (loc == null || loc == "") {
-      document.getElementById("temperature").innerHTML = "0°";
-      document.getElementById("feelsLike").innerHTML = "Feels 0°";
-    } else {
-      getWeatherData(loc);
-    }
+function open_menu() {
+  var clicked = document.getElementById("drop-menu");
+  if (clicked.style.display == "block") {
+    clicked.style.display = "none";
+  } else {
+    clicked.style.display = "block";
   }
-});
+}
 
 function createDropdownList() {
   var select = document.getElementById("location-input");
@@ -60,10 +70,27 @@ function createDropdownList() {
   ];
   for (var i = 0; i < elmts.length; i++) {
     var op = elmts[i];
-    var el = document.createElement("option");
+    var el = document.createElement("li");
     el.textContent = op;
-    el.value = op;
+    // el.value = op;
     select.appendChild(el);
+    // el.classList.add('location')
   }
 }
-createDropdownList()
+createDropdownList();
+
+var ele = document.querySelectorAll("#location-input li");
+ele.forEach((element) => {
+  element.addEventListener("click", () => {
+    document.getElementById("location").innerHTML = element.textContent;
+    var clicked = document.getElementById("drop-menu");
+    clicked.style.display = "none";
+    var loc = element.textContent;
+    if (loc == null || loc == "") {
+      document.getElementById("temperature").innerHTML = "0°";
+      document.getElementById("feelsLike").innerHTML = "Feels 0°";
+    } else {
+      getWeatherData(loc);
+    }
+  });
+});

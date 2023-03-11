@@ -17,10 +17,16 @@
           placeholder="Enter Location"
           type="text"
         /> -->
-        <div class="location-select">
+        <!-- <div class="location-select">
           <select id="location-input"></select>
+        </div> -->
+        <div id="dropdown">
+          <button onclick="open_menu()">select location</button>
+          <h2 id="location">Location Name</h2>
+          <div class="open" id="drop-menu">
+            <ul id="location-input"></ul>
+          </div>
         </div>
-        
         <img class="menuIcon" src="image/icon2.svg" alt="menuIcon" />
       </div>
     </header>
