@@ -23,12 +23,6 @@ body {
   padding-bottom: 2vh;
 }
 
-@media screen and (max-width: 600px) {
-  .banner {
-    font-size: 2em;
-  }
-}
-
 .shareIcon {
   width: 5%;
   height: 7%;
@@ -94,17 +88,7 @@ body {
   color: lightsteelblue;
 }
 
-.location-name {
-  background: transparent;
-  text-align: center;
-  border: none;
-  text-decoration: none;
-  color: white;
-  outline: none;
-  font-size: 3rem;
-}
-
-#location-input {
+#locationInput {
   background: transparent;
   border: none;
   font-size: 2rem;
@@ -121,6 +105,7 @@ button {
   font-size: 20px;
   border-radius: 5px;
 }
+
 ul li {
   list-style: none;
   display: block;
@@ -137,16 +122,19 @@ ul li {
   text-decoration: none;
   cursor: pointer;
 }
+
 .open {
   display: none;
 }
-#dropdown{
+
+#dropdown {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#drop-menu{
+
+#dropMenu {
   position: absolute;
   top: 10%;
   max-height: 40%;

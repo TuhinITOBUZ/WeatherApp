@@ -1,10 +1,21 @@
+let image = document.getElementById("weatherIcon");
+let clicked = document.getElementById("dropMenu");
+let select = document.getElementById("locationInput");
+let elmts = [
+  "Kolkata",
+  "London",
+  "Mumbai",
+  "Chennai",
+  "Orissa",
+  "Agra",
+  "Bangalore",
+  "Gujarat",
+  "Hyderabad",
+];
 
 async function getWeatherData(location) {
-  const response = await fetch(
-    "http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=" +
-      location +
-      "&aqi=no"
-  )
+  const url = `http://localhost:5000/${location}`;
+  const response = await fetch(url)
     .then(function (res) {
       return res.json();
     })
@@ -14,39 +25,29 @@ async function getWeatherData(location) {
   if (response.error) {
     alert(response.error.message);
   } else {
-    document.getElementById("temperature").innerHTML =
-      response.current.temp_c + "°";
-    document.getElementById("feelsLike").innerHTML =
-      "Feels " + response.current.feelslike_c + "°";
-    var image = document.getElementById("weatherIcon");
-    if (response.current.condition.text === "Overcast") {
-      image.src = "image/overcast.svg";
-    } else if (response.current.condition.text === "Sunny") {
-      image.src = "image/sunny.svg";
-    } else if (response.current.condition.text === "Mist") {
-      image.src = "image/mist.svg";
-    } else if (response.current.condition.text === "Clear") {
-      image.src = "image/clear.svg";
-    } else {
-      image.src = "image/icon3.png";
+    try {
+      document.getElementById("temperature").innerHTML =
+        response.data.tempC + "°";
+      document.getElementById("feelsLike").innerHTML =
+        "Feels " + response.data.feelsLike + "°";
+      if (response.data.condition === "Overcast") {
+        image.src = "image/overcast.svg";
+      } else if (response.data.condition === "Sunny") {
+        image.src = "image/sunny.svg";
+      } else if (response.data.condition === "Mist") {
+        image.src = "image/mist.svg";
+      } else if (response.data.condition === "Clear") {
+        image.src = "image/clear.svg";
+      } else {
+        image.src = "image/icon3.png";
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 }
-// on enter key
-// document.addEventListener("keydown", (e) => {
-//   if (e.key == "Enter") {
-//     var loc = document.getElementById("location-input").value;
-//     if (loc == null || loc == "") {
-//       document.getElementById("temperature").innerHTML = "0°";
-//       document.getElementById("feelsLike").innerHTML = "Feels 0°";
-//     } else {
-//       getWeatherData(loc);
-//     }
-//   }
-// });
 
-function open_menu() {
-  var clicked = document.getElementById("drop-menu");
+function openMenu() {
   if (clicked.style.display == "block") {
     clicked.style.display = "none";
   } else {
@@ -55,42 +56,26 @@ function open_menu() {
 }
 
 function createDropdownList() {
-  var select = document.getElementById("location-input");
-  var elmts = [
-    "Kolkata",
-    "London",
-    "San Fransisco",
-    "Mumbai",
-    "Chennai",
-    "Orissa",
-    "Agra",
-    "Bangalore",
-    "Gujarat",
-    "Hyderabad",
-  ];
   for (var i = 0; i < elmts.length; i++) {
     var op = elmts[i];
     var el = document.createElement("li");
     el.textContent = op;
-    // el.value = op;
     select.appendChild(el);
-    // el.classList.add('location')
   }
 }
 createDropdownList();
 
-var ele = document.querySelectorAll("#location-input li");
+var ele = document.querySelectorAll("#locationInput li");
 ele.forEach((element) => {
   element.addEventListener("click", () => {
     document.getElementById("location").innerHTML = element.textContent;
-    var clicked = document.getElementById("drop-menu");
     clicked.style.display = "none";
     var loc = element.textContent;
     if (loc == null || loc == "") {
       document.getElementById("temperature").innerHTML = "0°";
       document.getElementById("feelsLike").innerHTML = "Feels 0°";
     } else {
-      getWeatherData(loc);
+      getWeatherData(loc.toLowerCase());
     }
   });
 });

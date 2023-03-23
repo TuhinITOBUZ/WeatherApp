@@ -10,29 +10,20 @@
   <body>
     <header>
       <div class="banner">
-        <img class="shareIcon" src="image/icon1.svg" alt="shareIcon" />
-        <!-- <input
-          class="location-name"
-          id="locationInput"
-          placeholder="Enter Location"
-          type="text"
-        /> -->
-        <!-- <div class="location-select">
-          <select id="location-input"></select>
-        </div> -->
+        <img class="shareIcon" src="image/share.svg" alt="shareIcon" />
         <div id="dropdown">
-          <button onclick="open_menu()">select location</button>
+          <button onclick="openMenu()">select location</button>
           <h2 id="location">Location Name</h2>
-          <div class="open" id="drop-menu">
-            <ul id="location-input"></ul>
+          <div class="open" id="dropMenu">
+            <ul id="locationInput"></ul>
           </div>
         </div>
-        <img class="menuIcon" src="image/icon2.svg" alt="menuIcon" />
+        <img class="menuIcon" src="image/menu.svg" alt="menuIcon" />
       </div>
     </header>
     <div class="weather">
       <div class="weatherLogo">
-        <img src="image/icon3.png" alt="weather-logo" id="weatherIcon" />
+        <img src="image/weather.png" alt="weather-logo" id="weatherIcon" />
       </div>
       <div class="weatherDetails">
         <h2 id="temperature">0°</h2>
@@ -40,10 +31,10 @@
       </div>
     </div>
     <div class="notes">
-      <p>
+      <p class="para">
         Make the most of this nice weather that I generated for you. Or else.
       </p>
     </div>
-    <script src="Js/main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
