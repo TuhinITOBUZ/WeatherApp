@@ -1,7 +1,8 @@
 let image = document.getElementById("weatherIcon");
 let clicked = document.getElementById("dropMenu");
 let select = document.getElementById("locationInput");
-let elmts = [
+
+let elements = [
   "Kolkata",
   "London",
   "Mumbai",
@@ -48,7 +49,7 @@ async function getWeatherData(location) {
 }
 
 function openMenu() {
-  if (clicked.style.display == "block") {
+  if (clicked.style.display === "block") {
     clicked.style.display = "none";
   } else {
     clicked.style.display = "block";
@@ -56,26 +57,25 @@ function openMenu() {
 }
 
 function createDropdownList() {
-  for (var i = 0; i < elmts.length; i++) {
-    var op = elmts[i];
-    var el = document.createElement("li");
-    el.textContent = op;
-    select.appendChild(el);
+  for (let i = 0; i < elements.length; i++) {
+    let operation = elements[i];
+    let element = document.createElement("li");
+    element.textContent = operation;
+    select.appendChild(element);
   }
 }
 createDropdownList();
 
-var ele = document.querySelectorAll("#locationInput li");
-ele.forEach((element) => {
+document.querySelectorAll("#locationInput li").forEach((element) => {
   element.addEventListener("click", () => {
     document.getElementById("location").innerHTML = element.textContent;
     clicked.style.display = "none";
-    var loc = element.textContent;
-    if (loc == null || loc == "") {
+    let location = element.textContent;
+    if (location === null || location === "") {
       document.getElementById("temperature").innerHTML = "0°";
       document.getElementById("feelsLike").innerHTML = "Feels 0°";
     } else {
-      getWeatherData(loc.toLowerCase());
+      getWeatherData(location.toLowerCase());
     }
   });
 });
