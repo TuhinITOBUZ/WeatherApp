@@ -115,10 +115,6 @@ ul li {
   color: lightsteelblue;
 }
 
-.open {
-  display: none;
-}
-
 #locationInput {
   background: transparent;
   border: none;
@@ -135,6 +131,7 @@ ul li {
 }
 
 #dropMenu {
+  display: none;
   position: absolute;
   top: 10%;
   max-height: 40%;
